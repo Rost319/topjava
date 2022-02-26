@@ -15,15 +15,21 @@
         <th>Дата/Время</th>
         <th>Описание</th>
         <th>Калории</th>
+        <th>  </th>
     </tr>
 
     <c:forEach var="meal" items="${mealToList}">
 
 
         <tr style="color: ${meal.excess ? "red" : "green"}">
+            <td>${meal.id}</td>
             <td>${meal.dateTime}</td>
             <td>${meal.description}</td>
             <td>${meal.calories}</td>
+
+            <td>
+                <a href="update-meals.jsp?mealId=${meal.id}">Редактировать</a>
+            </td>
         </tr>
 
     </c:forEach>

@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.service;
 
+import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.MealTo;
 import ru.javawebinar.topjava.util.MealsUtil;
 
@@ -27,5 +28,10 @@ public class MealServiceImpl implements MealService {
     @Override
     public void deleteMealTo(int id) {
 
+    }
+
+    @Override
+    public List<Meal> getAllMeal() {
+        return mealsUtil.getMeals();
     }
 }
