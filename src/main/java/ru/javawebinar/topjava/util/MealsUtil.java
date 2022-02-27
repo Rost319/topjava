@@ -18,17 +18,18 @@ import static java.util.stream.Collectors.toList;
 
 public class MealsUtil {
     private static final int DEFAULT_CALORIES_PER_DAY = 2000;
-    private List<Meal> meals;
+    private static ConcurrentHashMap<Integer, Meal> meals;
 
-    public MealsUtil() {
-        meals = new CopyOnWriteArrayList<>(Arrays.asList(
-                new Meal(LocalDateTime.of(2015, Month.MAY, 30, 10, 0), "Завтрак", 500),
-                new Meal(LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Обед", 1000),
-                new Meal(LocalDateTime.of(2015, Month.MAY, 30, 20, 0), "Ужин", 500),
-                new Meal(LocalDateTime.of(2015, Month.MAY, 31, 10, 0), "Завтрак", 1000),
-                new Meal(LocalDateTime.of(2015, Month.MAY, 31, 13, 0), "Обед", 500),
-                new Meal(LocalDateTime.of(2015, Month.MAY, 31, 20, 0), "Ужин", 510)
-        ));
+    public static ConcurrentHashMap<Integer, Meal> createMeals() {
+        meals = new ConcurrentHashMap<>();
+        meals.put(1, new Meal(LocalDateTime.of(2015, Month.MAY, 30, 10, 0), "Завтрак", 500));
+        meals.put(2, new Meal(LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Обед", 1000));
+        meals.put(3, new Meal(LocalDateTime.of(2015, Month.MAY, 30, 20, 0), "Ужин", 500));
+        meals.put(4, new Meal(LocalDateTime.of(2015, Month.MAY, 31, 10, 0), "Завтрак", 1000));
+        meals.put(5, new Meal(LocalDateTime.of(2015, Month.MAY, 31, 13, 0), "Обед", 500));
+        meals.put(6, new Meal(LocalDateTime.of(2015, Month.MAY, 31, 20, 0), "Ужин", 510));
+
+        return meals;
     }
 
 //    public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -199,11 +200,8 @@ public class MealsUtil {
 //
 
 
-    public List<Meal> getMeals() {
-        return meals;
-    }
 
-    public List<MealTo> getAllMealTo() {
+    public static List<MealTo> getAllMealTo(Collection<Meal> meals) {
         final Map<LocalDate, Integer> caloriesSumByDate = new HashMap<>();
         meals.forEach(meal -> caloriesSumByDate.merge(meal.getDate(), meal.getCalories(), Integer::sum));
 
@@ -215,7 +213,7 @@ public class MealsUtil {
         return mealsTo;
     }
 
-    private MealTo createTo(Meal meal, boolean excess) {
+    private static MealTo createTo(Meal meal, boolean excess) {
         return new MealTo(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
     }
 }

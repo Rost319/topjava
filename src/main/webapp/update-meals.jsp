@@ -5,8 +5,9 @@
   Time: 21:52
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Update</title>
@@ -16,21 +17,19 @@
 
 
 <br>
-<form method="post" action="meals">
+<form method="post" action="<c:url value='/update'/>">
 
-    <input type="number" hidden name="id" value="<%= request.getParameter("mealId") %>">
+    <input type="number" hidden name="id" value="${requestScope.meal.id}"/>
 
-    <label><input type="datetime-local" name="dateTime"></label><br>
+    <label> Дата/Время <input type="datetime-local" name="dateTime" value="${requestScope.meal.dateTime}"></label><br>
 
-    <label><input type="text" name="description"></label><br>
+    <label> Описание <input type="text" name="description" value="${requestScope.meal.description}"></label><br>
 
-    <label><input type="number" name="calories"></label><br>
+    <label> Калории <input type="number" name="calories" value="${requestScope.meal.calories}"></label><br>
 
     <input type="submit" value="Ok" name="Ok"><br>
 
 </form>
-
-
 
 </body>
 </html>

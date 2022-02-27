@@ -16,6 +16,8 @@
         <th>Описание</th>
         <th>Калории</th>
         <th>  </th>
+        <th>  </th>
+
     </tr>
 
     <c:forEach var="meal" items="${mealToList}">
@@ -28,13 +30,31 @@
             <td>${meal.calories}</td>
 
             <td>
-                <a href="update-meals.jsp?mealId=${meal.id}">Редактировать</a>
+                <form method="post" action="<c:url value='/delete'/>">
+                    <input type="number" hidden name="id" value="${meal.id}" />
+                    <input type="submit" name="delete" value="Удалить"/>
+                </form>
+            </td>
+
+            <td>
+                <form method="get" action="<c:url value='/update'/>">
+                    <input type="number" hidden name="id" value="${meal.id}" />
+                    <input type="submit" value="Редактировать"/>
+                </form>
             </td>
         </tr>
 
     </c:forEach>
 
-</table>
+
+</table><br>
+
+<h4>Создание новой записи</h4>
+
+<form method="get" action="<c:url value='/add_meal'/>">
+    <input type="number" hidden name="id" value="${meal.id}" />
+    <input type="submit" value="Добавить"/>
+</form>
 
 
 </body>
