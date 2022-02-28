@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.web;
 
+import org.slf4j.Logger;
 import ru.javawebinar.topjava.model.Meal;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,10 @@ import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 public class UpdateMealServlet extends HttpServlet {
+    private static final Logger log = getLogger(UpdateMealServlet.class);
     private Map<Integer, Meal> meals;
 
     @Override
@@ -33,6 +37,7 @@ public class UpdateMealServlet extends HttpServlet {
             throws ServletException, IOException {
 
         req.setCharacterEncoding("UTF-8");
+        log.debug("update meal");
 
         final String id = req.getParameter("id");
         final String dateTime = req.getParameter("dateTime");
