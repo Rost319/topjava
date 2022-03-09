@@ -67,8 +67,8 @@ public class InMemoryMealRepository implements MealRepository {
     @Override
     public Collection<Meal> getAll(LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime, int userId) {
         log.info("getAll");
-        if(startDate == null) startDate = LocalDate.MIN;
-        if(endDate == null) endDate = LocalDate.MAX;
+        if(startDate == null) startDate = DateTimeUtil.MIN_DATE;
+        if(endDate == null) endDate = DateTimeUtil.MAX_DATE;
         if(startTime == null) startTime = LocalTime.MIN;
         if(endTime == null) endTime = LocalTime.MAX;
 
