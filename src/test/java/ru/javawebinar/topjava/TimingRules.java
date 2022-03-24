@@ -24,11 +24,9 @@ public class TimingRules {
         }
     };
 
-    private static final String DELIM = "--------------------------------------------------" +
-            "-----------------------------------------------------";
+    private static final String DELIM = "-".repeat(103);
 
-    private static final String DELIMIN = "--------------------------------------------------" +
-            "--------------------------------------------------------";
+    private static final String DELIMIN = "-".repeat(106);
 
     public static final ExternalResource SUMMARY = new ExternalResource() {
         @Override
