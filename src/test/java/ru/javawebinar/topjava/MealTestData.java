@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava;
 
 import ru.javawebinar.topjava.model.Meal;
+import ru.javawebinar.topjava.to.MealTo;
 
 import java.time.Month;
 import java.util.List;
@@ -31,6 +32,11 @@ public class MealTestData {
 
     public static Meal getUpdated() {
         return new Meal(MEAL1_ID, MEAL1.getDateTime(), "Обновленный завтрак", 200);
+    }
+
+
+    public static Meal createFrom(MealTo mealTo) {
+        return new Meal(mealTo.getId(), mealTo.getDateTime(), mealTo.getDescription(), mealTo.getCalories());
     }
 
     public static void assertMatch(Meal actual, Meal expected) {
