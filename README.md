@@ -7,6 +7,7 @@ Java Enterprise Online Project
 
 ![topjava_structure](https://user-images.githubusercontent.com/13649199/27433714-8294e6fe-575e-11e7-9c41-7f6e16c5ebe5.jpg)
 
+ <! --
     Когда вы слышите что-то, вы забываете это.
     Когда вы видите что-то, вы запоминаете это.
     Но только когда вы начинаете делать это,
@@ -258,3 +259,4 @@ JSF- JavaEE веб фреймворк, с которым я ни разу не �
 -  <a href="http://www.bookvoed.ru/book?id=639284">Редмонд Э.: Семь баз данных за семь недель. Введение в современные базы данных и идеологию NoSQL</a>
 -  <a href="http://www.ozon.ru/context/detail/id/3174887/">Brian Goetz: Java Concurrency in Practice</a>
 -  <a href="http://bookvoed.ru/book?id=2593572">G.L. McDowell: Cracking the Coding Interview</a>
+-->
